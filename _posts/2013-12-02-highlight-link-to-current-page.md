@@ -5,7 +5,7 @@ title: 高亮导航链接
 ---
 这段代码总要用到,贴在这里备忘:
 
-{% highlight javascript linenos%}
+{% highlight javascript linenos=table %}
 $(document).ready(function(){
 	var str=location.href.toLowerCase();
 	$(".nav li a").each(function() {
