@@ -16,3 +16,6 @@ Icon
 
 ### Jekyll ###
 _site/
+
+# webstorm
+.idea/
