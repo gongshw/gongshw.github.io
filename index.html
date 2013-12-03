@@ -10,6 +10,7 @@ title: 这里是Gongshw的学习笔记的主页
 	<li>{{ post.date | date_to_string }}
 		<a href="{{ post.url }}">{{ post.title }}</a>
 		<a href="{{ post.url }}#disqus_thread"></a>
+		<p>{{ post.excerpt }}</p>
 	</li>
 	{% endfor %}
 </ul>
