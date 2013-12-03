@@ -29,7 +29,7 @@
 
 </head>
 
-<body>
+<body xmlns="http://www.w3.org/1999/html">
 
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -67,17 +67,21 @@
 <div class="container">
 	<!-- Example row of columns -->
 	<div class="row">
-
-		<div class="row">
-			<div class="col-lg-12">
-				<h2>我的第一篇文章:你好，世界</h2>
-			</div>
+		<div class="col-lg-12">
+			<h2>我的第一篇文章:你好，世界</h2>
 		</div>
-
+	</div>
+	<div class="row">
 		<div class="col-lg-8">
-
-
-			<p><p>这个博客的建立参考了下面几篇文章:</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a href="/">首页</a>&gt;
+						<a href="/categories/技术">分类: 技术</a>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div><p>这个博客的建立参考了下面几篇文章:</p>
 
 <ul>
 	<li><a target="_blank" href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">搭建一个免费的，无限流量的Blog----github
@@ -89,11 +93,33 @@
 	<li><a target="_blank" href="http://jekyllrb.com/">Jekyll • Simple, blog-aware, static sites</a>
 	</li>
 </ul>
-</p>
+</div>
+					<hr>
+					<div>
 
-			<p>02 Dec 2013</p>
+						<span><span class="glyphicon glyphicon-tags"></span>
+							标签:
+							
+							<a href="js:;">Jekyll</a>
+							
+							<a href="js:;">Disqus</a>
+							
+							<a href="js:;">博客</a>
+							</span>
+						|
+						<span>
+							<span class="glyphicon glyphicon-calendar"></span>
+							发布日期: 02 Dec 2013</span>
+						|
+						<span>
+							<span class="glyphicon glyphicon-link"></span>
+							<a href="/%E6%8A%80%E6%9C%AF/2013/12/02/hello-world.html">本文链接</a></span>
+					</div>
 
-			<hr>
+				</div>
+			</div>
+
+
 			<!--DISQUS START-->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -137,7 +163,7 @@
     </p>
 </footer>
 
-	
+
 </div>
 <!-- /container -->
 
