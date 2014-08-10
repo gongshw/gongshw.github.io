@@ -10,7 +10,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Category: 技术</title>
+	<title>一些冷门但是实用的java类库</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 
@@ -29,7 +29,7 @@
 
 </head>
 
-<body>
+<body xmlns="http://www.w3.org/1999/html">
 
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -66,47 +66,81 @@
 
 <div class="container">
 	<!-- Example row of columns -->
-
 	<div class="row">
 		<div class="col-lg-12">
-			<h2>Category: 技术</h2>
+			<h2>一些冷门但是实用的java类库</h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-8">
 			<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">该分类下文章</h3>
-	</div>
-	<div class="panel-body">
-		<ul>
-			
-			<li>
-				<div><h3><a href="/%E6%8A%80%E6%9C%AF/2013/12/02/hello-world.html">我的第一篇文章:你好，世界</a></h3></div>
-			</li>
-			<div>
-					<span><span class="glyphicon glyphicon-tags"></span>
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a href="/">首页</a>&gt;
+						<a href="/categories/代码">分类: 代码</a>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div><p>题目中的“冷门”是严格定义的: 冷门是指该项目的主要版本在maven中心仓库被其他项目依赖的次数不超过10次。</p>
+
+<p>这些库可能不像apache commons或者google guava这样大名鼎鼎、功能全面，但是可以方便的解决一些开发应用时常常遇到的问题。贴在下面备忘。</p>
+
+<ol>
+<li>subethasmtp: 一个可编程的基于SMTP协议的邮件服务器。严格来说这是一个框架而不是类库。</li>
+
+<li>zt-zip: 接口友善的zip压缩/解压库。在这个库帮助下，大部分的压缩/解压任务都可以使用一行代码实现。</li>
+
+<li><a href='http://ocpsoft.org/prettytime/' title='prettytime'>prettytime</a>: 格式化时间为“xxx时间之前”的库。开发网站时很有用。</li>
+</ol></div>
+					<hr>
+					<div>
+
+						<span><span class="glyphicon glyphicon-tags"></span>
 							标签:
 							
-							<a href="js:;">Jekyll</a>
+							<a href="js:;">java</a>
 							
-							<a href="js:;">Disqus</a>
-							
-							<a href="js:;">博客</a>
+							<a href="js:;">类库</a>
 							</span>
-				|
+						|
 						<span>
 							<span class="glyphicon glyphicon-calendar"></span>
-							发布日期: 2013-12-02</span>
-				|
-				分类: <a href="/categories/技术">技术</a>
-				|
-				<a href="/%E6%8A%80%E6%9C%AF/2013/12/02/hello-world.html#disqus_thread"></a>
+							发布日期: 2014-08-10</span>
+						|
+						<span>
+							<span class="glyphicon glyphicon-link"></span>
+							<a href="/%E4%BB%A3%E7%A0%81/2014/08/10/not-popular-but-useful-java-lib.html">本文链接</a></span>
+					</div>
+
+					<div>
+
+					</div>
+
+				</div>
 			</div>
-			
-		</ul>
-	</div>
-</div>
+
+
+			<!--DISQUS START-->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'gongshw'; // required: replace example with your forum shortname
+
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function () {
+		var dsq = document.createElement('script');
+		dsq.type = 'text/javascript';
+		dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+	Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span
+		class="logo-disqus">Disqus</span></a>
+<!--DISQUS END-->
+
 
 		</div>
 		<div class="col-lg-4">
@@ -148,7 +182,6 @@
 
 		</div>
 	</div>
-
 	<hr>
 <footer>
 	<p>&copy; Gongshw 2013
@@ -157,6 +190,7 @@
         </span>
 	</p>
 </footer>
+
 
 </div>
 <!-- /container -->
@@ -168,6 +202,7 @@
 
 <script src="/js/main.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+
 
 
 <script>
@@ -186,6 +221,7 @@
 	ga('create', 'UA-38846492-3', 'gongshw.github.io');
 	ga('send', 'pageview');
 </script>
+
 <script type="text/javascript">
 	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 	var disqus_shortname = 'gongshw'; // required: replace example with your forum shortname
