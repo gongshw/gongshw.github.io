@@ -94,41 +94,52 @@
 
 <p>Jekyll插件是由ruby编写的，在Jekyll构建静态网时执行的程序。虽然插件不能改变生成的web站点是静态网页的本质，但能通过强大的模板功能扩展Jekyll的能力。</p>
 
-<p>比如<a href='http://pizn.github.io/2012/02/23/use-category-plugin-for-jekyll-blog.html'>这篇博客</a>提到的category_plugin，可以实现博客的分类功能。</p>
+<p>比如<a href="http://pizn.github.io/2012/02/23/use-category-plugin-for-jekyll-blog.html">这篇博客</a>提到的category_plugin，可以实现博客的分类功能。</p>
 
 <p>但被广泛使用的Jekyll托管站点GitHub Pages却不支持Jekyll插件。虽然原因可以理解，却使Jekyll生成的博客的可用性大大降低。要使GitHub Pages“支持”Jekyll插件，其实有个很耍小聪明的解决方案：直接部署经过Jekyll+插件构建后的站点到GitHub上。</p>
 
 <p>思路如下</p>
 
-<p>1. 安装本地的<a href='http://jekyllrb.com/'>Jekyll</a>环境。</p>
-
-<p>2. 使用 <code>jekyll new</code>命令新建一个jekyll站点目录。</p>
-
-<p>3. 在本地的jekyll站点编写博客。这时可以使用jekyll插件。</p>
-
-<p>4. 使用 <code>jekyll build</code>命令生成静态站点。默认的输出目录是_site/</p>
-
-<p>5. 把_site/目录下的文件发布到github。因为这就是一个静态站点不需要GitHub再次利用Jekyll构建，所以在根目录下添加一个内容为空的.nojekyll文件(<code>touch .nojekyll</code>)</p>
+<ol>
+  <li>
+    <p>安装本地的<a href="http://jekyllrb.com/">Jekyll</a>环境。</p>
+  </li>
+  <li>
+    <p>使用 <code>jekyll new</code>命令新建一个jekyll站点目录。</p>
+  </li>
+  <li>
+    <p>在本地的jekyll站点编写博客。这时可以使用jekyll插件。</p>
+  </li>
+  <li>
+    <p>使用 <code>jekyll build</code>命令生成静态站点。默认的输出目录是_site/</p>
+  </li>
+  <li>
+    <p>把_site/目录下的文件发布到github。因为这就是一个静态站点不需要GitHub再次利用Jekyll构建，所以在根目录下添加一个内容为空的.nojekyll文件(<code>touch .nojekyll</code>)</p>
+  </li>
+</ol>
 
 <p>这个过程的4、5两步可以利用脚本实现自动化。我写的脚本如下:</p>
-<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre><code class='sh'>1
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-sh" data-lang="sh">1
 2
 3
 4
 5
 6
 7
-8</code></pre></div></td><td class='code'><div class='highlight'><pre><span class='c'>#!/bin/sh</span>
-<span class='nb'>cd</span> ~/raw.gongshw.github.io<span class='p'>;</span> 
-jekyll build <span class='o'>||</span> error_exit <span class='s2'>&quot;$LINENO: jekyll build failed&quot;</span><span class='p'>;</span>
-cp -r _site/ ../gongshw.github.io/<span class='p'>;</span>
-<span class='nb'>cd</span> ../gongshw.github.io/<span class='p'>;</span>
-git add .<span class='p'>;</span>
-git commit -am <span class='s1'>&#39;Latest build.&#39;</span><span class='p'>;</span>
-git push<span class='p'>;</span>
+8</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="nb">cd</span> ~/raw.gongshw.github.io<span class="p">;</span> 
+jekyll build <span class="o">||</span> error_exit <span class="s2">&quot;$LINENO: jekyll build failed&quot;</span><span class="p">;</span>
+cp -r _site/ ../gongshw.github.io/<span class="p">;</span>
+<span class="nb">cd</span> ../gongshw.github.io/<span class="p">;</span>
+git add .<span class="p">;</span>
+git commit -am <span class="s1">&#39;Latest build.&#39;</span><span class="p">;</span>
+git push<span class="p">;</span>
 </pre></div>
 </td></tr></table>
-<p>我在~/raw.gongshw.github.io目录存放模板。每次构建后自动复制_site到gongshw.github.io/这个git目录并提交到github.</p></div>
+
+<p>我在~/raw.gongshw.github.io目录存放模板。每次构建后自动复制_site到gongshw.github.io/这个git目录并提交到github.</p>
+</div>
 					<hr>
 					<div>
 
@@ -218,7 +229,7 @@ var duoshuoQuery = {short_name:"gongshw"};
 	</div>
 	<hr>
 <footer>
-	<p>&copy; Gongshw 2013
+	<p>&copy; Gongshw 2015
         <span style="float:right">Hosted by <a href="http://github.com/schacon/schacon.github.com/" target="_blank">GitHub</a> and powered by <a
 		        href="http://github.com/mojombo/jekyll">Jekyll</a>
         </span>

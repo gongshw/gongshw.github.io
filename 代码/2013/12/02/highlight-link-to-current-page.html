@@ -91,7 +91,8 @@
 				</div>
 				<div class="panel-body">
 					<div><p>这段代码总要用到,贴在这里备忘:</p>
-<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre><code class='javascript'>1
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-javascript" data-lang="javascript">1
 2
 3
 4
@@ -99,17 +100,19 @@
 6
 7
 8
-9</code></pre></div></td><td class='code'><div class='highlight'><pre><span class='nx'>$</span><span class='p'>(</span><span class='nb'>document</span><span class='p'>).</span><span class='nx'>ready</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>(){</span>
-	<span class='kd'>var</span> <span class='nx'>str</span><span class='o'>=</span><span class='nx'>location</span><span class='p'>.</span><span class='nx'>href</span><span class='p'>.</span><span class='nx'>toLowerCase</span><span class='p'>();</span>
-	<span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;.nav li a&quot;</span><span class='p'>).</span><span class='nx'>each</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
-		<span class='k'>if</span> <span class='p'>(</span><span class='nx'>str</span><span class='p'>.</span><span class='nx'>indexOf</span><span class='p'>(</span><span class='k'>this</span><span class='p'>.</span><span class='nx'>href</span><span class='p'>.</span><span class='nx'>toLowerCase</span><span class='p'>())</span> <span class='o'>&gt;</span> <span class='o'>-</span><span class='mi'>1</span><span class='p'>)</span> <span class='p'>{</span>
-			<span class='nx'>$</span><span class='p'>(</span><span class='s2'>&quot;li.active&quot;</span><span class='p'>).</span><span class='nx'>removeClass</span><span class='p'>(</span><span class='s2'>&quot;active&quot;</span><span class='p'>);</span>
-			<span class='nx'>$</span><span class='p'>(</span><span class='k'>this</span><span class='p'>).</span><span class='nx'>parent</span><span class='p'>().</span><span class='nx'>addClass</span><span class='p'>(</span><span class='s2'>&quot;active&quot;</span><span class='p'>);</span>
-		<span class='p'>}</span>
-	<span class='p'>});</span>
-<span class='p'>})</span>
+9</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+	<span class="kd">var</span> <span class="nx">str</span><span class="o">=</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.nav li a&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;li.active&quot;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">);</span>
+			<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">});</span>
+<span class="p">})</span>
 </pre></div>
-</td></tr></table></div>
+</td></tr></table>
+
+</div>
 					<hr>
 					<div>
 
@@ -199,7 +202,7 @@ var duoshuoQuery = {short_name:"gongshw"};
 	</div>
 	<hr>
 <footer>
-	<p>&copy; Gongshw 2013
+	<p>&copy; Gongshw 2015
         <span style="float:right">Hosted by <a href="http://github.com/schacon/schacon.github.com/" target="_blank">GitHub</a> and powered by <a
 		        href="http://github.com/mojombo/jekyll">Jekyll</a>
         </span>
