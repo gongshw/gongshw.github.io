@@ -17,8 +17,8 @@
 	<link rel="stylesheet" href="/css/material.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/syntax.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="http://fonts.useso.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<script>
 		var _hmt = _hmt || [];
@@ -41,40 +41,39 @@ your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">a
 improve your experience.</p>
 <![endif]-->
 <header class="mdl-layout__header mdl-layout__header--scroll .mdl-color--grey-100">
-<div class="mdl-layout__header-row">
-  <!-- Title -->
-  <span class="mdl-layout-title">编程狗窝</span>
-  <!-- Add spacer, to align navigation to the right -->
-  <div class="mdl-layout-spacer"></div>
-  <!-- Navigation -->
-  <nav class="mdl-navigation">
-    <a class="mdl-navigation__link" href=""></a>
-  </nav>
-</div>
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"><a id="site-title" href="/">编程狗窝</a></span>
+        
+        <div class="mdl-tooltip" for="site-title">
+            点击这里可以去这个更新得很不频繁的博客的首页.
+        </div>
+        
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href=""></a>
+        </nav>
+    </div>
 </header>
 <div class="mdl-layout__drawer">
-<span class="mdl-layout-title">编程狗窝</span>
-<nav class="mdl-navigation">
-  <a class="mdl-navigation__link" href="/">主页</a>
-  <a class="mdl-navigation__link" href="/all.html">所有文章</a>
-  <a class="mdl-navigation__link" href="/about.html">关于</a>
-</nav>
-<nav class="mdl-navigation">
-  <span class="nav-sub-title">文章分类</span>
-  
-  <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/技术/">技术 (1)</a>
-  
-  <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a>
-  
-  <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a>
-  
-  <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/工具/">工具 (1)</a>
-  
-  <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a>
-  
-</nav>
+    <span class="mdl-layout-title">编程狗窝</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">主页</a>
+        <a class="mdl-navigation__link" href="/all.html">所有文章</a>
+        <a class="mdl-navigation__link" href="/about.html">关于</a>
+    </nav>
+    <nav class="mdl-navigation">
+        <span class="nav-sub-title">文章分类</span> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/技术/">技术 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/工具/">工具 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a> 
+    </nav>
 </div>
- 
+
         <div class="post-ribbon"></div>
         <main class="mdl-layout__content post-main">
             <div class="mdl-grid">
@@ -135,12 +134,21 @@ var duoshuoQuery = {short_name:"gongshw"};
         <!-- /container -->
         <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
     <div class="center-text fa-icons-container">
-        <a href="https://plus.google.com/+ShiweiGong" target="_blank"><i class="fa fa-google-plus"></i></a>
-        <a href="http://weibo.com/gongshiwei/" target="_blank"><i class="fa fa-weibo"></i></a>
-        <a href="https://github.com/gongshw/" target="_blank"><i class="fa fa-github"></i></a>
+        <a id="google-plus-link" href="https://plus.google.com/+ShiweiGong" target="_blank"><i class="fa fa-google-plus"></i></a>
+        <div class="mdl-tooltip" for="google-plus-link">
+            我的Google+, 这里可能会分享一些有趣的内容.
+        </div>
+        <a id="weibo-link" href="http://weibo.com/gongshiwei/" target="_blank"><i class="fa fa-weibo"></i></a>
+        <div class="mdl-tooltip" for="weibo-link">
+            我的微博, 会从豆瓣同步一些内容过来. 有时会转发一些抽奖微博.
+        </div>
+        <a id="github-link" href="https://github.com/gongshw/" target="_blank"><i class="fa fa-github"></i></a>
+        <div class="mdl-tooltip" for="github-link">
+            我的github, 别看.
+        </div>
     </div>
     <div class="center-text">
-    	<a href="javascript:void(0);">友情链接:</a>
+        <a disabled href="javascript:void(0);">友情链接:</a>
         <a href="http://abbeychenxi.net/">Abbey in Cradle Studio</a>
         <a href="http://www.chenjieyu.com/">Jenny's Secret Graden</a>
     </div>
@@ -148,7 +156,6 @@ var duoshuoQuery = {short_name:"gongshw"};
 </footer>
  <script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-<script src="/js/vendor/bootstrap.min.js"></script>
 <script src="/js/vendor/material.min.js"></script>
 <script src="/js/main.js"></script>
 
