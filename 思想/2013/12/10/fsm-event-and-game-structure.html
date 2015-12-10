@@ -10,12 +10,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>分类: 代码 | 编程狗窝</title>
+	<title>有限状态机、事件和游戏架构设计 | 编程狗窝</title>
 	<meta name="description" content="编程狗窝 一个程序员的博客 ">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- meta tags for swiftype search engine-->
-	<meta class="swiftype" name="title" data-type="string" content="分类: 代码" />
+	<meta class="swiftype" name="title" data-type="string" content="有限状态机、事件和游戏架构设计" />
+	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="有限状态机、事件和游戏架构设计" />	
+	
 	
 
 	<link rel="stylesheet" href="/css/material.min.css">
@@ -36,9 +40,10 @@
 
 </head>
 
-<body>
-<div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
-	<!--[if lt IE 7]>
+
+<body xmlns="http://www.w3.org/1999/html">
+    <div class="mdl-layout mdl-js-layout">
+        <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
 improve your experience.</p>
@@ -76,7 +81,10 @@ improve your experience.</p>
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/工具/">工具 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/思想/">思想 (1)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/浏览器/">浏览器 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/java/">java (1)</a> 
     </nav>
 </div>
 <script type="text/javascript">
@@ -88,74 +96,47 @@ improve your experience.</p>
   _st('install','EUxTXyTowSpa-ZzSewru','2.0.0');
 </script>
 
-	<main class="mdl-layout__content" data-swiftype-index="true" data-swiftype-name="body" data-swiftype-type="text">
-		<div class="demo-grid-1 mdl-grid">
-  			<div class="mdl-cell mdl-cell--3-col">
-  			</div>
-  			<div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-phone">
-				<h3 class="panel-title">分类“<em>代码</em>”下的文章</h3>
+        <div class="post-ribbon"></div>
+        <main class="mdl-layout__content post-main">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                <div class="post-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                    <div class="post-crumb">
+                        <a href="/">首页</a> &gt;
+                        <a href="/categories/思想">思想</a> &gt;
+                        <a href="/%E6%80%9D%E6%83%B3/2013/12/10/fsm-event-and-game-structure.html">有限状态机、事件和游戏架构设计</a>
+                    </div>
+                    <h1 data-swiftype-name="title" data-swiftype-type="string">有限状态机、事件和游戏架构设计</h2>
 
-<div class="mdl-card mdl-shadow--2dp my-card-wide">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><a href="/%E4%BB%A3%E7%A0%81/2014/08/10/not-popular-but-useful-java-lib.html">一些冷门但是实用的java类库</a></h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-        <p>题目中的“冷门”是严格定义的: 冷门是指该项目的主要版本在maven中心仓库被其他项目依赖的次数不超过10次。</p>
-
-
-    </div>
-    <div class="mdl-card__actions mdl-card--border grey-text-container">
-        <div>
-            <span><i class="fa fa-tags" title="标签"></i> 
-                <a href="/tag/java">java</a> 
-                <a href="/tag/类库">类库</a> 
-            </span> |
-            <span> <i class="fa fa-calendar" title="发布时间"></i> 2014-08-10</span> |
-            <span><i class="fa fa-book" title="分类"></i> <a href="/categories/代码">代码</a></span>
-            <a href="/%E4%BB%A3%E7%A0%81/2014/08/10/not-popular-but-useful-java-lib.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right">阅读</a>
-        </div>
-    </div>
-    <div class="mdl-card__menu hidden">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-        </button>
-    </div>
+                    <div data-swiftype-name="body" data-swiftype-type="text"><p>有限状态机的思想很适合用在游戏架构设计上。</p>
 </div>
 
+                    <div class="pull-right grey-text-container article-meta">
+                        <span><i class="fa fa-tags"></i> 
+                        <a href="/tag/有限状态机、事件和游戏架构设计">有限状态机、事件和游戏架构设计</a> </span>
+                        |
+                        <span><i class="fa fa-calendar"></i> 2013-12-10</span>
+                    </div>
 
-<div class="mdl-card mdl-shadow--2dp my-card-wide">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><a href="/%E4%BB%A3%E7%A0%81/2013/12/02/highlight-link-to-current-page.html">高亮导航链接</a></h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-        <p>这段代码总要用到,贴在这里备忘:</p>
-
-
-    </div>
-    <div class="mdl-card__actions mdl-card--border grey-text-container">
-        <div>
-            <span><i class="fa fa-tags" title="标签"></i> 
-                <a href="/tag/jQuery">jQuery</a> 
-                <a href="/tag/高亮">高亮</a> 
-                <a href="/tag/导航">导航</a> 
-            </span> |
-            <span> <i class="fa fa-calendar" title="发布时间"></i> 2013-12-02</span> |
-            <span><i class="fa fa-book" title="分类"></i> <a href="/categories/代码">代码</a></span>
-            <a href="/%E4%BB%A3%E7%A0%81/2013/12/02/highlight-link-to-current-page.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right">阅读</a>
-        </div>
-    </div>
-    <div class="mdl-card__menu hidden">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-        </button>
-    </div>
-</div>
-
-
-
-  			</div>
-		</div>
-		<footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+                    <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/%E6%80%9D%E6%83%B3/2013/12/10/fsm-event-and-game-structure" data-title="有限状态机、事件和游戏架构设计" data-url="/%E6%80%9D%E6%83%B3/2013/12/10/fsm-event-and-game-structure.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"gongshw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+                </div>
+            </div>
+            <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
     <div class="center-text fa-icons-container">
         <a id="google-plus-link" href="https://plus.google.com/+ShiweiGong" target="_blank"><i class="fa fa-google-plus"></i></a>
         <div class="mdl-tooltip" for="google-plus-link">
@@ -177,15 +158,14 @@ improve your experience.</p>
     </div>
     </div>
 </footer>
-
-	</main>
-	<!-- /container -->
-
-	<script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
+ 
+        </main>
+        <!-- /container -->
+        <script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 <script src="/js/vendor/material.min.js"></script>
 <script src="/js/main.js"></script>
 
-</div>
+    </div>
 </body>
 </html>
