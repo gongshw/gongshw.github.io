@@ -84,7 +84,7 @@ improve your experience.</p>
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/技术/">技术 (2)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a> 
-        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/工具/">工具 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="3" href="/categories/工具/">工具 (3)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a> 
     </nav>
 </div>
@@ -139,14 +139,14 @@ improve your experience.</p>
 
 <p>这个过程的4、5两步可以利用脚本实现自动化。我写的脚本如下:</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-sh" data-lang="sh">1
 2
 3
 4
 5
 6
 7
-8<td class="code"><span class="c">#!/bin/sh</span>
+8</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
 <span class="nb">cd</span> ~/raw.gongshw.github.io<span class="p">;</span> 
 jekyll build <span class="o">||</span> error_exit <span class="s2">&quot;$LINENO: jekyll build failed&quot;</span><span class="p">;</span>
 cp -r _site/ ../gongshw.github.io/<span class="p">;</span>
@@ -154,18 +154,16 @@ cp -r _site/ ../gongshw.github.io/<span class="p">;</span>
 git add .<span class="p">;</span>
 git commit -am <span class="s1">&#39;Latest build.&#39;</span><span class="p">;</span>
 git push<span class="p">;</span>
+</pre></div>
+</td></tr></table>
 
-</td></pre>
+<p>我在~/raw.gongshw.github.io目录存放模板。每次构建后自动复制_site到gongshw.github.io/这个git目录并提交到github.</p>
 
+<p><em>2015年8月7日更新</em></p>
 
-我在~/raw.gongshw.github.io目录存放模板。每次构建后自动复制_site到gongshw.github.io/这个git目录并提交到github.
+<p>上文的脚本在mac环境下一直运行正常, 不过在linux下cp命令常常被alias到cp -i,可能需要先unalias再执行脚本. 我最新使用的脚本如下:</p>
 
-*2015年8月7日更新*
-
-上文的脚本在mac环境下一直运行正常, 不过在linux下cp命令常常被alias到cp -i,可能需要先unalias再执行脚本. 我最新使用的脚本如下:
-
-
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-sh" data-lang="sh"> 1
  2
  3
  4
@@ -176,7 +174,7 @@ git push<span class="p">;</span>
  9
 10
 11
-12<td class="code"><span class="c">#!/bin/sh</span>
+12</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
 <span class="nb">cd</span> ~/raw.gongshw.github.io<span class="p">;</span> 
 jekyll build <span class="o">||</span> error_exit <span class="s2">&quot;$LINENO: jekyll build failed&quot;</span><span class="p">;</span>
 git add .<span class="p">;</span>
@@ -188,10 +186,9 @@ cp -r _site/* ../gongshw.github.io/<span class="p">;</span>
 git add .<span class="p">;</span>
 git commit -am <span class="s2">&quot;Latest build: ${1}&quot;</span><span class="p">;</span>
 git push<span class="p">;</span>
+</pre></div>
+</td></tr></table>
 
-</td></pre>
-
-</div></td></tr></table></code></pre></figure></div></td></tr></table></code></pre></figure>
 </div>
 
                     <div id="tags" class="pull-right grey-text-container article-meta">

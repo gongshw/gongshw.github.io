@@ -10,12 +10,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>有&ldquo;X&rdquo;标签的文章 | 编程狗窝</title>
+	<title>在vim状态行显示当前目录 | 编程狗窝</title>
 	<meta name="description" content="编程狗窝 一个程序员的博客 ">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- meta tags for swiftype search engine-->
-	<meta class="swiftype" name="title" data-type="string" content="有&ldquo;X&rdquo;标签的文章" />
+	<meta class="swiftype" name="title" data-type="string" content="在vim状态行显示当前目录" />
+	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="vim" />	
+	
 	
 
 	<link rel="stylesheet" href="/css/material.min.css">
@@ -36,9 +40,10 @@
 
 </head>
 
-<body>
-<div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
-	<!--[if lt IE 7]>
+
+<body xmlns="http://www.w3.org/1999/html">
+    <div class="mdl-layout mdl-js-layout">
+        <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
 improve your experience.</p>
@@ -75,11 +80,8 @@ improve your experience.</p>
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/技术/">技术 (2)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a> 
-        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/工具/">工具 (2)</a> 
-        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/思想/">思想 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="3" href="/categories/工具/">工具 (3)</a> 
         <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a> 
-        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/浏览器/">浏览器 (1)</a> 
-        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/java/">java (1)</a> 
     </nav>
 </div>
 <script type="text/javascript">
@@ -91,145 +93,61 @@ improve your experience.</p>
   _st('install','EUxTXyTowSpa-ZzSewru','2.0.0');
 </script>
 
-	<main class="mdl-layout__content" data-swiftype-index="true" data-swiftype-name="body" data-swiftype-type="text">
-		<div class="demo-grid-1 mdl-grid">
-  			<div class="mdl-cell mdl-cell--3-col">
-  			</div>
-  			<div class="mdl-cell mdl-cell--6-col mdl-cell--6-col-phone">
-				<h3 class="panel-title">有标签“<em>X</em>”的文章</h3>
+        <div class="post-ribbon"></div>
+        <main class="mdl-layout__content post-main">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                <div class="post-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                    <div class="post-crumb">
+                        <a href="/">首页</a> &gt;
+                        <a href="/categories/工具">工具</a> &gt;
+                        <a href="/%E5%B7%A5%E5%85%B7/2015/12/12/vim-work-directory-in-statusline.html">在vim状态行显示当前目录</a>
+                    </div>
+                    <h1 data-swiftype-name="title" data-swiftype-type="string">在vim状态行显示当前目录</h2>
 
-	
-		
-	
+                    <div data-swiftype-name="body" data-swiftype-type="text"><p>Vim的使用者都知道使用<code>set statusline</code>来自定义Vim的状态行,例如<code>set statusline=[%f]%y%r%m%*%=[%l/%L:%c,%p%%]</code>,其中标识符<code>%f</code>代表当前活跃文件的文件名。</p>
 
-	
-		
-	
-		
-	
-		
-	
+<p>我时用Vim时常常会打开不同目录下的文件,打开几个文件之后就会忘记启动Vim的工作目录,而我也没有在终端的标题栏显示当前目录(因为命令提示符处有显示),所以我特别希望Vim的状态行能够显示当前目录。</p>
 
-	
-		
-	
-		
-		<div class="mdl-card mdl-shadow--2dp my-card-wide">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text"><a href="/%E5%B7%A5%E5%85%B7/2015/12/11/osx-slow-terminal.html">解决OS X El Capitan下Terminal启动慢的问题</a></h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-        <p>升级最新版的OS X El Capitan有一段时间了，总体来说与Yosemite区别不大。不过升级之后系统自带的Terminal启动极慢(每次启动大约要10秒左右)。这显然是不能接受的.</p>
+<p>通过<code>:help statusline</code>阅读了相关文档,我发现Vim并没有提供一个表示符来表示当前活动目录。但google了之后我发现Vim提供了getcwd()函数获取当前目录。因此我对vim做了如下配置:</p>
 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-vim" data-lang="vim">1
+2
+3</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="c">&quot;在状态栏显示目录，文件名，所有的行数等等</span>
+<span class="k">let</span> CWD <span class="p">=</span> substitute<span class="p">(</span>getcwd<span class="p">(),</span> <span class="s1">&#39;^&#39;</span>.$HOME<span class="p">,</span> <span class="s1">&#39;~&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="k">set</span> <span class="nb">statusline</span><span class="p">=</span>[%{CWD}][%<span class="k">f</span>]%<span class="k">y</span>%<span class="k">r</span>%<span class="k">m</span>%*%<span class="p">=</span>[%<span class="k">l</span>/%L:%<span class="k">c</span><span class="p">,</span>%<span class="k">p</span>%%]
+</pre></div>
+</td></tr></table>
 
-    </div>
-    <div class="mdl-card__actions mdl-card--border grey-text-container">
-        <div>
-            <span><i class="fa fa-tags" title="标签"></i> 
-                <a href="/tag/OS\">OS\</a> 
-                <a href="/tag/X">X</a> 
-                <a href="/tag/El\">El\</a> 
-                <a href="/tag/Capitan">Capitan</a> 
-                <a href="/tag/Terminal">Terminal</a> 
-                <a href="/tag/Shell">Shell</a> 
-            </span> |
-            <span> <i class="fa fa-calendar" title="发布时间"></i> 2015-12-11</span> |
-            <span><i class="fa fa-book" title="分类"></i> <a href="/categories/工具">工具</a></span>
-            <a href="/%E5%B7%A5%E5%85%B7/2015/12/11/osx-slow-terminal.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right">阅读</a>
-        </div>
-    </div>
-    <div class="mdl-card__menu hidden">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-        </button>
-    </div>
+<p>其中<code>getcwd()</code>被用来函数获取当前目录, 然后用<code>~</code>替换这个目录中的<code>$HOME</code>环境变量,最后显示在状态行上。</p>
 </div>
 
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
+                    <div id="tags" class="pull-right grey-text-container article-meta">
+                        <span><i class="fa fa-tags"></i> 
+                        <a href="/tag/vim">vim</a> </span>
+                        |
+                        <span><i class="fa fa-calendar"></i> 2015-12-12</span>
+                    </div>
 
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-		
-	
-
-	
-		
-	
-		
-	
-		
-	
-
-	
-		
-	
-		
-	
-
-	
-		
-	
-		
-	
-
-	
-		
-	
-
-	
-		
-	
-		
-	
-		
-	
-
-	
-		
-	
-		
-	
-		
-	
-
-	
-		
-	
-		
-	
-		
-	
-
-	
-		
-	
-		
-	
-		
-	
-
-
-  			</div>
-		</div>
-		<footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+                    <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/%E5%B7%A5%E5%85%B7/2015/12/12/vim-work-directory-in-statusline" data-title="在vim状态行显示当前目录" data-url="/%E5%B7%A5%E5%85%B7/2015/12/12/vim-work-directory-in-statusline.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"gongshw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+                </div>
+            </div>
+            <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
     <div class="center-text fa-icons-container">
         <a id="google-plus-link" href="https://plus.google.com/+ShiweiGong" target="_blank"><i class="fa fa-google-plus"></i></a>
         <div class="mdl-tooltip" for="google-plus-link">
@@ -251,15 +169,14 @@ improve your experience.</p>
     </div>
     </div>
 </footer>
-
-	</main>
-	<!-- /container -->
-
-	<script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
+ 
+        </main>
+        <!-- /container -->
+        <script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 <script src="/js/vendor/material.min.js"></script>
 <script src="/js/main.js"></script>
 
-</div>
+    </div>
 </body>
 </html>
