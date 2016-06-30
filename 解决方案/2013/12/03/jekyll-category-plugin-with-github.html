@@ -184,6 +184,46 @@ git push<span class="p">;</span>
 </pre></div>
 </td></tr></table>
 
+<p><em>2016年6月30日更新</em></p>
+
+<p>jekyll升级到3.0之后出现了大量的不兼容，最新的脚本指定了jekyll的版本:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-sh" data-lang="sh"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;git need a commit message!&quot;</span>
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+<span class="nb">cd</span> ~/raw.gongshw.github.io<span class="p">;</span>
+jekyll _2.5.3_ build <span class="o">||</span> error_exit <span class="s2">&quot;$LINENO: jekyll build failed&quot;</span><span class="p">;</span>
+git add .<span class="p">;</span>
+git commit -am <span class="s2">&quot;${1}&quot;</span><span class="p">;</span>
+git push<span class="p">;</span>
+<span class="nb">cd</span> ~/gongshw.github.io/<span class="p">;</span>
+git pull
+rm -rf ./*<span class="p">;</span>
+cp -r ~/raw.gongshw.github.io/_site/* .<span class="p">;</span>
+git add .<span class="p">;</span>
+git commit -am <span class="s2">&quot;[auto sync] ${1}&quot;</span><span class="p">;</span>
+git push<span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
 </div>
 
                     <div id="tags" class="pull-right grey-text-container article-meta">
