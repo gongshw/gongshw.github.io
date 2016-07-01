@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>谁说Java没有奇技淫巧之lombok | 编程狗窝</title>
+	<meta name="description" content="编程狗窝 一个程序员的博客 ">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- meta tags for swiftype search engine-->
+	<meta class="swiftype" name="title" data-type="string" content="谁说Java没有奇技淫巧之lombok" />
+	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="Java" />	
+	
+	
+
+	<link rel="stylesheet" href="/css/material.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/animate.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="stylesheet" href="http://fonts.useso.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?01a5b9ca3e91fca4f316b35cea934022";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+</head>
+
+
+<body xmlns="http://www.w3.org/1999/html">
+    <div class="mdl-layout mdl-js-layout">
+        <!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+improve your experience.</p>
+<![endif]-->
+<header class="mdl-layout__header mdl-layout__header--waterfall .mdl-color--grey-100">
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"><a id="site-title" href="/">编程狗窝</a></span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+            <input class="st-default-search-input" type="text" id="search_text" />
+            <div class="mdl-tooltip" for="search_text">
+                搜索这个博客
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">编程狗窝</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">主页</a>
+        <a class="mdl-navigation__link" href="/all.html">所有文章</a>
+        <a class="mdl-navigation__link" href="/about.html">关于</a>
+    </nav>
+    <nav class="mdl-navigation">
+        <span class="nav-sub-title">文章分类</span> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/技术/">技术 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="3" href="/categories/工具/">工具 (3)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/java/">java (1)</a> 
+    </nav>
+</div>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','EUxTXyTowSpa-ZzSewru','2.0.0');
+</script>
+
+        <div class="post-ribbon"></div>
+        <main class="mdl-layout__content post-main">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                <div class="post-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                    <div class="post-crumb">
+                        <a href="/">首页</a> &gt;
+                        <a href="/categories/Java">Java</a> &gt;
+                        <a href="/java/2016/07/01/java-magic-with-lombok.html">谁说Java没有奇技淫巧之lombok</a>
+                    </div>
+                    <h1 data-swiftype-name="title" data-swiftype-type="string">谁说Java没有奇技淫巧之lombok</h2>
+
+                    <div data-swiftype-name="body" data-swiftype-type="text"><p>总的来说Java是一种很“正”的语言，静态类型，大量的checked exception，只有极少的语法糖，程序员在日常开发中很难写出花来。但在另一个角度上，由于Java “代码-字节码-jvm虚拟机” 的机制，Java又是一种灵活的，可扩展的语言。本文介绍的lombok技术就是一种基于Annotation Processor的技术，可以自动生成一些工程上必要，但写起来又冗长无聊的代码（严格来说是字节码）。</p>
+
+<p>lombok被发布为一个jar包，提供了一系列标注用于修饰你的代码，下面的代码片段是一个完整的使用lombok修饰的Java代码的例子。</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LombokDemo</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">DemoClass</span> <span class="o">{</span>
+        <span class="nd">@Getter</span>
+        <span class="nd">@Setter</span>
+        <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">DemoClass</span> <span class="n">demoObject</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DemoClass</span><span class="o">();</span>
+        <span class="n">demoObject</span><span class="o">.</span><span class="na">setField</span><span class="o">(</span><span class="s">&quot;lombok&quot;</span><span class="o">);</span> <span class="c1">// 编译时生成setField方法</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">demoObject</span><span class="o">.</span><span class="na">getField</span><span class="o">());</span> <span class="c1">// 编译时生成getField方法</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>按理说上述代码会编译失败，因为DemoClass类并没有setField和getField这两个方法，但实际上在编译时，lombok的jar包内的Annotation Processor会被调用，根据lombok标注，操作抽象语法树，添加field成员变量的读取和写入方法，最终生成一个包含setField和getField这两个方法的字节码文件(.class文件)。</p>
+
+<p>我们使用@Getter和@Setter标注修饰了DemoClass的私有字段field，编译后上述代码等价于：</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LombokDemo</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">DemoClass</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getField</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">field</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setField</span><span class="o">(</span><span class="n">String</span> <span class="n">field</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">DemoClass</span> <span class="n">demoObject</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DemoClass</span><span class="o">();</span>
+        <span class="n">demoObject</span><span class="o">.</span><span class="na">setField</span><span class="o">(</span><span class="s">&quot;lombok&quot;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">demoObject</span><span class="o">.</span><span class="na">getField</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>除了自动生成成员变量访问方法外，lombok还支持自动生成toString、equals、hashCode等方法，以及其他一些实用的模板代码。下面是一个常用的lombok标注列表：</p>
+
+<p><em>@Data</em></p>
+
+<p>@Data标注是最常用的lombok标注，标注在类上，等价于同时使用@ToString、@EqualsAndHashCode这2个标注修饰了该类，并且为所有的成员变量添加的@Getter和@Setter标注。</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java">1
+2
+3
+4
+5
+6</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoClass</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>等价于：</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoClass</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getField</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">field</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setField</span><span class="o">(</span><span class="n">String</span> <span class="n">field</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">o</span> <span class="o">==</span> <span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span><span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">DemoClass</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">DemoClass</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">DemoClass</span><span class="o">)</span><span class="n">o</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(!</span><span class="n">other</span><span class="o">.</span><span class="na">canEqual</span><span class="o">(</span><span class="k">this</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">String</span> <span class="k">this</span><span class="n">$field</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getField</span><span class="o">();</span>
+                <span class="n">String</span> <span class="n">other$field</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="na">getField</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="n">$field</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">other$field</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span><span class="o">(!</span><span class="k">this</span><span class="n">$field</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">other$field</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+                <span class="o">}</span>
+
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">canEqual</span><span class="o">(</span><span class="n">Object</span> <span class="n">other</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">other</span> <span class="k">instanceof</span> <span class="n">DemoClass</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">PRIME</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="kt">byte</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">$field</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getField</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="mi">59</span> <span class="o">+</span> <span class="o">(</span><span class="n">$field</span> <span class="o">==</span> <span class="kc">null</span><span class="o">?</span><span class="mi">43</span><span class="o">:</span><span class="n">$field</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+        <span class="k">return</span> <span class="n">result1</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;DemoClass(field=&quot;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">getField</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p><em>@NonNull</em></p>
+
+<p>@NonNull可以被用来修饰成员变量和方法的参数。当@NonNull和@Setter同时修饰成员变量时，生成的写入方法将会检查参数是否非空，并在参数为空时抛出NullPointException。当@NonNull修饰一个方法的参数时，会在方法执行时添加检查参数是否为空的代码。</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.NonNull</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoClass</span> <span class="o">{</span>
+    <span class="nd">@Getter</span>
+    <span class="nd">@Setter</span>
+    <span class="nd">@NonNull</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">Object</span> <span class="n">word</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">word</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>等价于:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">lombok.NonNull</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoClass</span> <span class="o">{</span>
+    <span class="nd">@NonNull</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">Object</span> <span class="n">word</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">word</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">NullPointerException</span><span class="o">(</span><span class="s">&quot;word&quot;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">word</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@NonNull</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getField</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">field</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setField</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">String</span> <span class="n">field</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">field</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">NullPointerException</span><span class="o">(</span><span class="s">&quot;field&quot;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p><em>@AllArgsConstructor、@NoArgsConstructor、@RequiredArgsConstructor</em></p>
+
+<p>@AllArgsConstructor用于生成包含所有成员变量的构造函数、@NoArgsConstructor用于生成无参构造函数、@RequiredArgsConstructor用于生成包含final和@NonNull成员变量的构造函数。</p>
+
+<p><em>@Builder</em></p>
+
+<p>用于生成builder模式的工厂类，该工厂类使用链式调用创建一个目标类的实例。</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java">1
+2
+3
+4
+5
+6
+7</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">lombok.Builder</span><span class="o">;</span>
+
+<span class="nd">@Builder</span>
+<span class="kd">class</span> <span class="nc">Example</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">T</span> <span class="n">foo</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">bar</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>等价于：</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">Example</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">T</span> <span class="n">foo</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">bar</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nf">Example</span><span class="o">(</span><span class="n">T</span> <span class="n">foo</span><span class="o">,</span> <span class="n">String</span> <span class="n">bar</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">bar</span> <span class="o">=</span> <span class="n">bar</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ExampleBuilder</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">builder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">ExampleBuilder</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ExampleBuilder</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="n">T</span> <span class="n">foo</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="n">String</span> <span class="n">bar</span><span class="o">;</span>
+
+        <span class="kd">private</span> <span class="nf">ExampleBuilder</span><span class="o">()</span> <span class="o">{}</span>
+
+        <span class="kd">public</span> <span class="n">ExampleBuilder</span> <span class="nf">foo</span><span class="o">(</span><span class="n">T</span> <span class="n">foo</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">ExampleBuilder</span> <span class="nf">bar</span><span class="o">(</span><span class="n">String</span> <span class="n">bar</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">bar</span> <span class="o">=</span> <span class="n">bar</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">Example</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">Example</span><span class="o">(</span><span class="n">foo</span><span class="o">,</span> <span class="n">bar</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p><em>@SneakyThrows</em></p>
+
+<p>在被@SneakyThrows标注的方法中，如果调用了会抛出checked exception的方法，可以不捕获也不声明向上层抛出，编译器就仿佛视该异常是一个RuntimeException。</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java">1
+2
+3
+4</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nd">@SneakyThrows</span><span class="o">(</span><span class="n">UnsupportedEncodingException</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">utf8ToString</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span><span class="n">bytes</span><span class="o">){</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span><span class="s">&quot;UTF-8&quot;</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>上述代码可以被编译，而不是得到一个Error。@SneakyThrows标注在处理一些几乎不会被抛出的checked exception时很有用。</p>
+
+<p><em>@val</em></p>
+
+<p>受够了Java的冗长的类型声明？@val标注可以帮你完成类型推断（仅仅对局部变量）！</p>
+
+<p>使用”val”作为局部变量的类型声明, lombok将会根据初始化该变量的表达式推断实际的类型。例如<code>val x = 10.0;</code>将会被推断为<code>double</code>类型，而<code>val y = new ArrayList&lt;String&gt;();</code>将会被推断为<code>ArrayList&lt;String&gt;</code>。</p>
+
+<p>@val是lombok中唯一改变了Java语法结构的标注，个人认为需要谨慎使用。</p>
+
+<p><em>@CommonsLog、@Log、@Log4j、@Log4j2、@Slf4j、@XSlf4j</em></p>
+
+<p>这些标注用于为被标注的类生成一个log对象用于日志，每个标注对应了一种常用的日志库。</p>
+
+<p>例如@Slf4j对应了<code>org.slf4j.Logger</code>，</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java">1
+2
+3</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nd">@Slf4j</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogExample</span> <span class="o">{</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>等价于：</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java">1
+2
+3
+4
+5
+6</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LogExample</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LogExample</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+<p><em>IDE支持</em></p>
+
+<p>主流的Java IDE（IDEA、eclipse）都有插件支持lombok，避免IDE的一些错误提示。</p>
+
+<p><em>那么，代价是什么呢？</em></p>
+
+<p>lombok极大地减少了项目中“模板代码”的量，让开发者可以专注于业务逻辑，但代价是破坏了字节码和源代码的对应关系，可能会为调试和发布带来一些（极少的）不便。</p>
+
+<p>delombok工具就是为了解决这个问题，用于生产处理过的等价Java源代码，关于delombok的更多信息，见<a href="https://projectlombok.org/features/delombok.html">官方文档</a></p>
+
+<p><em>参考</em></p>
+
+<p>更多信息，可以参考lombok的<a href="https://projectlombok.org">官方站点</a>。</p>
+</div>
+
+                    <div id="tags" class="pull-right grey-text-container article-meta">
+                        <span><i class="fa fa-tags"></i> 
+                        <a href="/tag/Java">Java</a> </span>
+                        |
+                        <span><i class="fa fa-calendar"></i> 2016-07-01</span>
+                    </div>
+
+                    <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/java/2016/07/01/java-magic-with-lombok" data-title="谁说Java没有奇技淫巧之lombok" data-url="/java/2016/07/01/java-magic-with-lombok.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"gongshw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+                </div>
+            </div>
+            <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+    <div class="center-text fa-icons-container">
+        <a id="google-plus-link" href="https://plus.google.com/+ShiweiGong" target="_blank"><i class="fa fa-google-plus"></i></a>
+        <div class="mdl-tooltip" for="google-plus-link">
+            我的Google+, 这里可能会分享一些有趣的内容.
+        </div>
+        <a id="weibo-link" href="http://weibo.com/gongshiwei/" target="_blank"><i class="fa fa-weibo"></i></a>
+        <div class="mdl-tooltip" for="weibo-link">
+            我的微博, 会从豆瓣同步一些内容过来. 有时会转发一些抽奖微博.
+        </div>
+        <a id="github-link" href="https://github.com/gongshw/" target="_blank"><i class="fa fa-github"></i></a>
+        <div class="mdl-tooltip" for="github-link">
+            我的github, 别看.
+        </div>
+    </div>
+    <div class="center-text">
+        <span>友情链接:</span>
+        <a href="http://abbeychenxi.net/">Abbey in Cradle Studio</a>
+        <a href="http://www.chenjieyu.com/">Jenny's Secret Graden</a>
+    </div>
+    </div>
+</footer>
+ 
+        </main>
+        <!-- /container -->
+        <script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+<script src="/js/vendor/material.min.js"></script>
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

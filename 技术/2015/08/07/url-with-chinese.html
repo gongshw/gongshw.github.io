@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>一个含有中文的url的编码问题 | 编程狗窝</title>
+	<meta name="description" content="编程狗窝 一个程序员的博客 ">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- meta tags for swiftype search engine-->
+	<meta class="swiftype" name="title" data-type="string" content="一个含有中文的url的编码问题" />
+	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="Java" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="URL" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="编码" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="浏览器" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="HTTP" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="中文" />	
+	
+	
+
+	<link rel="stylesheet" href="/css/material.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/animate.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="stylesheet" href="http://fonts.useso.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?01a5b9ca3e91fca4f316b35cea934022";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+</head>
+
+
+<body xmlns="http://www.w3.org/1999/html">
+    <div class="mdl-layout mdl-js-layout">
+        <!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+improve your experience.</p>
+<![endif]-->
+<header class="mdl-layout__header mdl-layout__header--waterfall .mdl-color--grey-100">
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"><a id="site-title" href="/">编程狗窝</a></span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+            <input class="st-default-search-input" type="text" id="search_text" />
+            <div class="mdl-tooltip" for="search_text">
+                搜索这个博客
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">编程狗窝</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">主页</a>
+        <a class="mdl-navigation__link" href="/all.html">所有文章</a>
+        <a class="mdl-navigation__link" href="/about.html">关于</a>
+    </nav>
+    <nav class="mdl-navigation">
+        <span class="nav-sub-title">文章分类</span> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/技术/">技术 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="3" href="/categories/工具/">工具 (3)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/java/">java (1)</a> 
+    </nav>
+</div>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','EUxTXyTowSpa-ZzSewru','2.0.0');
+</script>
+
+        <div class="post-ribbon"></div>
+        <main class="mdl-layout__content post-main">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                <div class="post-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                    <div class="post-crumb">
+                        <a href="/">首页</a> &gt;
+                        <a href="/categories/技术">技术</a> &gt;
+                        <a href="/%E6%8A%80%E6%9C%AF/2015/08/07/url-with-chinese.html">一个含有中文的url的编码问题</a>
+                    </div>
+                    <h1 data-swiftype-name="title" data-swiftype-type="string">一个含有中文的url的编码问题</h2>
+
+                    <div data-swiftype-name="body" data-swiftype-type="text"><p>最近碰到一个需要把含有中文的url进行编码的问题。这个问题看似简单，但是查阅了相关资料之后发现也是有点坑的。</p>
+
+<p>根据网络标准<a href="http://www.ietf.org/rfc/rfc1738.txt">RFC 1738</a>:</p>
+
+<blockquote>
+  <p>The characters “;”,”/”, “?”, “:”, “@”, “=” and “&amp;” are the characters which may be reserved for special meaning … only alphanumerics, the special characters “$-_.+!*’(),”, and reserved characters used for their reserved purposes may be used unencoded within a URL.</p>
+</blockquote>
+
+<p>即只有字母数字、部分特殊字符和保留字可以不经编码出现在URL中。而中文字符,是必须要经过编码才能出现在URL中的。但是问题在于RFC 1738没有规定具体的编码方法, 这个编码方法取决于浏览器和http服务器的约定, 不同的浏览器对于不同来源的url中不同位置的中文字符可能采取不同的编码方法。这篇<a href="http://www.ruanyifeng.com/blog/2010/02/url_encoding.html">博客</a>对此进行了简略的分析。</p>
+
+<p>但实际上主流浏览器在处理出现在超链接中的含有中文的URL的方法是近乎一致的, 对于下面这个URL的跳转:</p>
+
+<blockquote>
+  <p>http://www.baidu.com/s?wd=中文测试</p>
+</blockquote>
+
+<p>chrome和firefoxie都是发送了下面的请求, 即使用<em>UTF-8</em>编码后在每一个字节的16进制表示前加上%字符</p>
+
+<blockquote>
+  <p>GET http://www.baidu.com/s?wd=%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95</p>
+</blockquote>
+
+<p>而ie则直接将中文字符<em>GBK</em>编码后的<em>二进制数据</em>放在了请求头中</p>
+
+<blockquote>
+  <p>GET <a href="http://www.baidu.com/s?wd=中文测试">http://www.baidu.com/s?wd={0xD6}{0xD0}{0xCE}{0xC4}{0xB2}{0xE2}{0xCA}{0xD4}</a></p>
+</blockquote>
+
+<p>如果http服务器不能同时正确地使用以上两种编码方式对http请求头进行解码, 那么该服务器就不能正确处理用户在浏览器中直接输入的带有中文的URL, 会导致服务器上的应用程序出现乱码问题。</p>
+
+<p>综合考虑以上问题, 我们决定使用chrome和firefoxie浏览器对中文链接的处理方法对URL进行处理, 即对仅对链接中的中文部分使用UTF-8进行<a href="https://zh.wikipedia.org/zh/%E7%99%BE%E5%88%86%E5%8F%B7%E7%BC%96%E7%A0%81">百分号编码</a>。</p>
+
+<p>下面的java代码实现了这个方法:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-java" data-lang="java"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="c1">// 将URL中的非ascii内容进行URL编码</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">encodeNonAsciiUrl</span><span class="o">(</span><span class="n">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="o">();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">url</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// an ascii character</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">c</span><span class="o">),</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">));</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">&quot;系统不支持UTF-8编码&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
+
+</div>
+
+                    <div id="tags" class="pull-right grey-text-container article-meta">
+                        <span><i class="fa fa-tags"></i> 
+                        <a href="/tag/Java">Java</a> 
+                        <a href="/tag/URL">URL</a> 
+                        <a href="/tag/编码">编码</a> 
+                        <a href="/tag/浏览器">浏览器</a> 
+                        <a href="/tag/HTTP">HTTP</a> 
+                        <a href="/tag/中文">中文</a> </span>
+                        |
+                        <span><i class="fa fa-calendar"></i> 2015-08-07</span>
+                    </div>
+
+                    <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/%E6%8A%80%E6%9C%AF/2015/08/07/url-with-chinese" data-title="一个含有中文的url的编码问题" data-url="/%E6%8A%80%E6%9C%AF/2015/08/07/url-with-chinese.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"gongshw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+                </div>
+            </div>
+            <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+    <div class="center-text fa-icons-container">
+        <a id="google-plus-link" href="https://plus.google.com/+ShiweiGong" target="_blank"><i class="fa fa-google-plus"></i></a>
+        <div class="mdl-tooltip" for="google-plus-link">
+            我的Google+, 这里可能会分享一些有趣的内容.
+        </div>
+        <a id="weibo-link" href="http://weibo.com/gongshiwei/" target="_blank"><i class="fa fa-weibo"></i></a>
+        <div class="mdl-tooltip" for="weibo-link">
+            我的微博, 会从豆瓣同步一些内容过来. 有时会转发一些抽奖微博.
+        </div>
+        <a id="github-link" href="https://github.com/gongshw/" target="_blank"><i class="fa fa-github"></i></a>
+        <div class="mdl-tooltip" for="github-link">
+            我的github, 别看.
+        </div>
+    </div>
+    <div class="center-text">
+        <span>友情链接:</span>
+        <a href="http://abbeychenxi.net/">Abbey in Cradle Studio</a>
+        <a href="http://www.chenjieyu.com/">Jenny's Secret Graden</a>
+    </div>
+    </div>
+</footer>
+ 
+        </main>
+        <!-- /container -->
+        <script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+<script src="/js/vendor/material.min.js"></script>
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
