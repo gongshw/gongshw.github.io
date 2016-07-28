@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>使Sublime Text 3的OmniMarkupPreviewer插件支持中文页内链接 | 编程狗窝</title>
+	<meta name="description" content="编程狗窝 一个程序员的博客 ">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- meta tags for swiftype search engine-->
+	<meta class="swiftype" name="title" data-type="string" content="使Sublime Text 3的OmniMarkupPreviewer插件支持中文页内链接" />
+	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="markdown" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="python" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="sublime" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="OmniMarkupPreviewer" />	
+	
+	
+
+	<link rel="stylesheet" href="/css/material.min.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/animate.css">
+	<link rel="stylesheet" href="/css/syntax.css">
+	<link rel="stylesheet" href="http://fonts.useso.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?01a5b9ca3e91fca4f316b35cea934022";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+
+</head>
+
+
+<body xmlns="http://www.w3.org/1999/html">
+    <div class="mdl-layout mdl-js-layout">
+        <!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+improve your experience.</p>
+<![endif]-->
+<header class="mdl-layout__header mdl-layout__header--waterfall .mdl-color--grey-100">
+    <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"><a id="site-title" href="/">编程狗窝</a></span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <nav class="mdl-navigation">
+            <input class="st-default-search-input" type="text" id="search_text" />
+        </nav>
+    </div>
+</header>
+<div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">编程狗窝</span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">主页</a>
+        <a class="mdl-navigation__link" href="/all.html">所有文章</a>
+        <a class="mdl-navigation__link" href="/about.html">关于</a>
+    </nav>
+    <nav class="mdl-navigation">
+        <span class="nav-sub-title">文章分类</span> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/技术/">技术 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/代码/">代码 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="2" href="/categories/解决方案/">解决方案 (2)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="4" href="/categories/工具/">工具 (4)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/前端/">前端 (1)</a> 
+        <a class="mdl-navigation__link mdl-badge" data-badge="1" href="/categories/java/">java (1)</a> 
+    </nav>
+</div>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','EUxTXyTowSpa-ZzSewru','2.0.0');
+</script>
+
+        <div class="post-ribbon"></div>
+        <main class="mdl-layout__content post-main">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                <div class="post-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                    <div class="post-crumb">
+                        <a href="/">首页</a> &gt;
+                        <a href="/categories/工具">工具</a> &gt;
+                        <a href="/%E5%B7%A5%E5%85%B7/2016/07/28/OmniMarkupPreviewer-support-chinese-header-id.html">使Sublime Text 3的OmniMarkupPreviewer插件支持中文页内链接</a>
+                    </div>
+                    <h1 data-swiftype-name="title" data-swiftype-type="string">使Sublime Text 3的OmniMarkupPreviewer插件支持中文页内链接</h2>
+
+                    <div data-swiftype-name="body" data-swiftype-type="text"><p>最近在使用使Sublime Text 3的OmniMarkupPreviewer插件进行一波文档编写工作。</p>
+
+<p>总体来说OmniMarkupPreviewer插件体验良好，但是却碰到一个比较棘手的问题。</p>
+
+<p>OmniMarkupPreviewer使用了Python Markdown作为渲染核心，可以启用Python Markdown的多种扩展. 我启用了其中的toc扩展，可以自动为文档生成目录，并且通过页内页内链接跳转到文档的各级标题处。当然要实现这一点，除了自动生成目录外，toc扩展还需要为各级标题按照标题内容添加id属性。</p>
+
+<p>我一看，真吼啊，各级标题都有了id，我不就可以方便的在文档内部使用页内链接实现引用，极大的方便了与读者吗。我原来的预期是这样的:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-text" data-lang="text">1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre></div></td><td class="code"><div class="highlight"><pre># 我是标题
+
+## 我是第一个二级标题
+
+请参考[本文档的这一部分](#我是第二个二级标题)
+
+## 我是第二个二级标题
+
+一些正文
+</pre></div>
+</td></tr></table>
+
+<p>这样可以从<code>请参考[本文档的这一部分]</code>这句话链到<code>我是第二个二级标题</code>这一节, 然而现实情况却是Python Markdown按标题内容生成的标题的id时, 把非ASCII字符都给过滤了, 生成的html差不多长这样:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-html" data-lang="html">1
+2
+3
+4
+5</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;_1&quot;</span><span class="nt">&gt;</span>我是标题<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;_2&quot;</span><span class="nt">&gt;</span>我是第一个二级标题<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>请参考<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#我是第二个二级标题&quot;</span><span class="nt">&gt;</span>本文档的这一部分<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;_3&quot;</span><span class="nt">&gt;</span>我是第二个二级标题<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>一些正文<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+</td></tr></table>
+
+<p>因为把中文过滤掉之后, 所有标题都是空字符串, 所以Python Markdown在标题的id后面加上了自增序列。</p>
+
+<p>这样我写的那个页内链接看起来就很傻了，要是按照Python Markdown的逻辑, 我的页内链接也改成<code>#_3</code>的话，又很不便于维护, 毕竟随便改动点内容就可能导致标题的id发生变化, 所以我就在找一个办法能让Python Markdown生成中文的标题id, 或者说UrlEncoded的中文id.</p>
+
+<p>通过阅读Python Markdown扩展TOC的源代码, 我知道了TOC是是用了Python Markdown的另一个扩展HeaderID生成标题的id的，这个扩展被安装在<code>Sublime Text 3\Packages\OmniMarkupPreviewer\OmniMarkupLib\Renderers\libs\markdown\extensions</code>目录下。</p>
+
+<p>然后阅读<code>headerid.py</code>的源代码我们发现了这个方法</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-python" data-lang="python">1
+2
+3
+4
+5</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">slugify</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">separator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Slugify a string, to make it URL friendly. &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s">&#39;NFKD&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;[^\w\s-]&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;[</span><span class="si">%s</span><span class="s">\s]+&#39;</span> <span class="o">%</span> <span class="n">separator</span><span class="p">,</span> <span class="n">separator</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>显然个方法过滤了标题中的非ASCII，然后用连字符连接了标题中的空格, 我也不用太关心这里的实现细节，简单粗暴地的把该方法改为:</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-python" data-lang="python">1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="nf">slugify</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">separator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Slugify a string, to make it URL friendly. &quot;&quot;&quot;</span>
+    <span class="c">#value = unicodedata.normalize(&#39;NFKD&#39;, value).encode(&#39;ascii&#39;, &#39;ignore&#39;)</span>
+    <span class="c">#value = re.sub(&#39;[^\w\s-]&#39;, &#39;&#39;, value.decode(&#39;ascii&#39;)).strip().lower()</span>
+    <span class="c">#return re.sub(&#39;[%s\s]+&#39; % separator, separator, value)</span>
+
+    <span class="c"># urllib.parse is for python 3. use urllib instead if you use python 2</span>
+    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span> 
+    <span class="k">return</span> <span class="n">quote</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Sublime Text 3使用了python 3, 所以我用urllib.parse包的quote方法把标题进行了了url编码。如果你是用的是Sublime Text 2, 可能需要python 2的urllib包中的相关方法。</p>
+
+<p>修改之后，我的文档中的页内链接终于能正常跳转到标题了，而且TOC扩展的行为也没有收到影响。</p>
+
+<p>HeaderID扩展本身提供了配置选项用使用者可以传入自己的slugify方法，可惜的是我没有找到OmniMarkupPreviewer暴露出的相关接口，不得不通过修改源代码的方式实现这个功能。</p>
+</div>
+
+                    <div id="tags" class="pull-right grey-text-container article-meta">
+                        <span><i class="fa fa-tags"></i> 
+                        <a href="/tag/markdown">markdown</a> 
+                        <a href="/tag/python">python</a> 
+                        <a href="/tag/sublime">sublime</a> 
+                        <a href="/tag/OmniMarkupPreviewer">OmniMarkupPreviewer</a> </span>
+                        |
+                        <span><i class="fa fa-calendar"></i> 2016-07-28</span>
+                    </div>
+
+                    <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/%E5%B7%A5%E5%85%B7/2016/07/28/OmniMarkupPreviewer-support-chinese-header-id" data-title="使Sublime Text 3的OmniMarkupPreviewer插件支持中文页内链接" data-url="/%E5%B7%A5%E5%85%B7/2016/07/28/OmniMarkupPreviewer-support-chinese-header-id.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"gongshw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+                </div>
+            </div>
+            <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+    <div class="center-text fa-icons-container">
+        <a id="google-plus-link" href="https://plus.google.com/+ShiweiGong" target="_blank"><i class="fa fa-google-plus"></i></a>
+        <div class="mdl-tooltip" for="google-plus-link">
+            我的Google+, 这里可能会分享一些有趣的内容.
+        </div>
+        <a id="weibo-link" href="http://weibo.com/gongshiwei/" target="_blank"><i class="fa fa-weibo"></i></a>
+        <div class="mdl-tooltip" for="weibo-link">
+            我的微博, 会从豆瓣同步一些内容过来. 有时会转发一些抽奖微博.
+        </div>
+        <a id="github-link" href="https://github.com/gongshw/" target="_blank"><i class="fa fa-github"></i></a>
+        <div class="mdl-tooltip" for="github-link">
+            我的github, 别看.
+        </div>
+    </div>
+    <div class="center-text">
+        <span>友情链接:</span>
+        <a href="http://abbeychenxi.net/">Abbey in Cradle Studio</a>
+        <a href="http://www.chenjieyu.com/">Jenny's Secret Graden</a>
+    </div>
+    </div>
+</footer>
+ 
+        </main>
+        <!-- /container -->
+        <script src="//libs.baidu.com/jquery/1.10.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+<script src="/js/vendor/material.min.js"></script>
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
