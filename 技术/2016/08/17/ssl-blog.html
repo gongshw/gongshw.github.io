@@ -10,19 +10,21 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>我的第一篇文章:你好，世界 | 编程狗窝</title>
+	<title>使用CloudFlare和反向代理实现全站SSL | 编程狗窝</title>
 	<meta name="description" content="编程狗窝 一个程序员的博客 ">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- meta tags for swiftype search engine-->
-	<meta class="swiftype" name="title" data-type="string" content="我的第一篇文章:你好，世界" />
+	<meta class="swiftype" name="title" data-type="string" content="使用CloudFlare和反向代理实现全站SSL" />
 	
 	
-	<meta class="swiftype" name="tags" data-type="string" content="Jekyll" />	
+	<meta class="swiftype" name="tags" data-type="string" content="HTTPS" />	
 	
-	<meta class="swiftype" name="tags" data-type="string" content="Disqus" />	
+	<meta class="swiftype" name="tags" data-type="string" content="SSL" />	
 	
-	<meta class="swiftype" name="tags" data-type="string" content="博客" />	
+	<meta class="swiftype" name="tags" data-type="string" content="CloudFlare" />	
+	
+	<meta class="swiftype" name="tags" data-type="string" content="反向代理" />	
 	
 	
 
@@ -99,35 +101,61 @@ improve your experience.</p>
                     <div class="post-crumb">
                         <a href="/">首页</a> &gt;
                         <a href="/categories/技术">技术</a> &gt;
-                        <a href="/%E6%8A%80%E6%9C%AF/2013/12/02/hello-world.html">我的第一篇文章:你好，世界</a>
+                        <a href="/%E6%8A%80%E6%9C%AF/2016/08/17/ssl-blog.html">使用CloudFlare和反向代理实现全站SSL</a>
                     </div>
-                    <h1 data-swiftype-name="title" data-swiftype-type="string">我的第一篇文章:你好，世界</h2>
+                    <h1 data-swiftype-name="title" data-swiftype-type="string">使用CloudFlare和反向代理实现全站SSL</h2>
 
-                    <div data-swiftype-name="body" data-swiftype-type="text"><p>这个博客的建立参考了下面几篇文章:</p>
+                    <div data-swiftype-name="body" data-swiftype-type="text"><p>CloudFlare是一个口碑还不错的CDN服务提供商，支持免费的HTTPS协议代理，可以用来实现自定义域名的github page的ssl访问。关于CloudFlare的配置，可以参考<a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">这篇文档</a>。</p>
+
+<p>CloudFlare会自动生成SSL证书为你的网站加密，这个证书会和其他托管在的CloudFlare上的一些网站共享。如果需要使用自己的SSL证书，需要订阅$200一个月的Business Website支持，<del>很</del>极不划算。</p>
+
+<p>要实现全站SSL，页面上不能引入任何非HTTPS协议的资源，我之前使用了百度的静态库托管和360的google font镜像，这两个都不支持HTTPS协议访问，于是我切换成了支持HTTPS的七牛静态库和gmirror.org的google font镜像。</p>
+
+<p>全站SSL的最后一块拼图是网站使用的多说评论框。多说评论框本身是支持HTTPS协议加载的，但是其中使用的新浪微博的头像却不支持https协议，需要通过一个反向代理，把所有新浪微博的头像的请求转为支持HTTPS协议的。网络上流传的方法都是通过修改多说的源代码实现的，可能会导致多说更新时产生不可预计的问题。我最终选择了使用重写javascript的appendChild函数的方法，在图片元素添加进页面时修改图片的src属性为一个反向代理的地址，实现不不侵入多说源代码的前提下的全站SSL。修改appendChild函数的的代码如下：</p>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-javascript" data-lang="javascript">1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">_appendChild</span> <span class="o">=</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">;</span>
+  <span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">appendChild</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">src</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/http:\/\/(.*)/</span><span class="p">,</span><span class="s2">&quot;https://lighthouse.gongshw.com/proxy/http/$1&quot;</span><span class="p">)</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">_appendChild</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</td></tr></table>
+
+<p>其中<code>https://lighthouse.gongshw.com/</code>是我实现的一个web代理，关于这个项目的更多信息，烦请移步<a href="https://github.com/gongshw/lighthouse">lighthouse的Github页面</a>。</p>
+
+<p>关于HTTPS和SSL的更多信息，推荐阅读阮一峰老师的这几篇博客：</p>
 
 <ul>
-	<li><a target="_blank" href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">搭建一个免费的，无限流量的Blog----github
-		Pages和Jekyll入门 - 阮一峰的网络日志</a></li>
-	<li><a target="_blank" href="http://www.worldhello.net/gotgithub/03-project-hosting/050-homepage.html">3.5. 建立主页 —
-		GotGitHub</a></li>
-	<li><a target="_blank" href="disqus.com/admin/universalcode/">Disqus | Install instructions for Universal Code</a>
-	</li>
-	<li><a target="_blank" href="http://jekyllrb.com/">Jekyll • Simple, blog-aware, static sites</a>
-	</li>
+  <li><a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">图解SSL/TLS协议</a></li>
+  <li><a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">SSL/TLS协议运行机制的概述</a></li>
+  <li><a href="http://www.ruanyifeng.com/blog/2011/02/seven_myths_about_https.html">HTTPS的七个误解（译文）</a></li>
 </ul>
 </div>
 
                     <div id="tags" class="pull-right grey-text-container article-meta">
                         <span><i class="fa fa-tags"></i> 
-                        <a href="/tag/Jekyll">Jekyll</a> 
-                        <a href="/tag/Disqus">Disqus</a> 
-                        <a href="/tag/博客">博客</a> </span>
+                        <a href="/tag/HTTPS">HTTPS</a> 
+                        <a href="/tag/SSL">SSL</a> 
+                        <a href="/tag/CloudFlare">CloudFlare</a> 
+                        <a href="/tag/反向代理">反向代理</a> </span>
                         |
-                        <span><i class="fa fa-calendar"></i> 2013-12-02</span>
+                        <span><i class="fa fa-calendar"></i> 2016-08-17</span>
                     </div>
 
                     <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/%E6%8A%80%E6%9C%AF/2013/12/02/hello-world" data-title="我的第一篇文章:你好，世界" data-url="/%E6%8A%80%E6%9C%AF/2013/12/02/hello-world.html"></div>
+	<div class="ds-thread" data-thread-key="/%E6%8A%80%E6%9C%AF/2016/08/17/ssl-blog" data-title="使用CloudFlare和反向代理实现全站SSL" data-url="/%E6%8A%80%E6%9C%AF/2016/08/17/ssl-blog.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
